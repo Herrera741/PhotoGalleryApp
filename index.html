@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Album</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div id="form-container">
+        <div id="form-title">
+            <h1>Photo Album Uploader</h1>
+        </div>
+        <div class="fields-container">   
+            <form action="" method="post">
+                <div class="form-field" id="title-field">
+                    <label class="label" for="photo-name">Photo title:</label>
+                    <input class="input" type="text" name="photo-title" placeholder="Enter title for photo">
+                </div>
+                <div class="form-field" id="date-field">
+                    <label class="label" for="photo-date">Date taken:</label>
+                    <input class="input" type="text" name="photo-date" placeholder="mm/dd/yyyy">
+                </div>
+                <div class="form-field" id="photographer-field">
+                    <label class="label" for="photographer">Photographer:</label>
+                    <input class="input" type="text" name="photographer" placeholder="Enter name of photographer">
+                </div>
+                <div class="form-field" id="location-field">
+                    <label class="label" for="location">Photo location:</label>
+                    <input class="input" type="text" name="location" placeholder="Enter photo capture location">
+                </div>
+                <div class="form-field" id="upload-field">
+                    <input type="file" id="file-input" hidden>
+                    <button type="button" id="select-btn">Select File</button>
+                    <span id="select-btn-text">No file selected</span>
+                </div>
+                <div class="submit-field">
+                    <input id="submit-btn" type="submit" value="Submit">
+                </div>
+            </form>    
+        </div>
+    </div>
+    <script src="/js/script.js"></script>
+</body>
+</html>

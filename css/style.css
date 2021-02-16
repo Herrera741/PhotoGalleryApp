@@ -1,0 +1,83 @@
+*,
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url(/images/bg.jpg);
+    background-repeat: none;
+    background-size: cover;
+    font-family: sans-serif;
+}
+
+#form-container {
+    width: 550px;
+    height: 620px;
+    margin-top: 50px;
+    background: rgb(0,0,0,0.6);
+    font-size: 1.2rem;
+    color: #fff;
+    border-radius: 15px;
+}
+
+h1 {
+    padding: 60px 0px;
+    text-align: center;
+    font-size: 2.6rem;
+}
+
+.form-field {
+    padding: 15px;
+}
+
+.label {
+    display: inline-block;
+    text-align: center;
+    width: 200px;
+}
+
+.input {
+    width: 260px;
+    height: 25px;
+    font-size: 1rem;
+}
+
+#select-btn {
+    margin: 15px 15px 15px 35px;
+    width: 144px;
+    height: 42px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.1rem;
+    background: #d11a2a;
+    outline: none;
+    cursor: pointer;
+}
+
+#select-btn-text {
+    font-size: 1.1rem;
+}
+
+.submit-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#submit-btn {
+    width: 320px;
+    height: 42px;
+    border: 2px solid #000;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.1rem;
+    background: #1183ca;
+    outline: none;
+    cursor: pointer;
+}
