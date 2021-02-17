@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(/images/bg.jpg);
+    background: url(/PhotoGalleryApp/images/bg.jpg);
     background-repeat: none;
     background-size: cover;
     font-family: sans-serif;
@@ -26,9 +26,15 @@ body {
 }
 
 h1 {
-    padding: 60px 0px 45px;
+    padding: 50px 0px 40px;
     text-align: center;
-    font-size: 2.6rem;
+    font-size: 2.65rem;
+}
+
+h2 {
+    width: fit-content;
+    margin-left: 32px;
+    padding-bottom: 10px;
 }
 
 .form-field {
@@ -37,12 +43,13 @@ h1 {
 
 .label {
     display: inline-block;
+    width: 185px;
+    margin-left: 10px;
     text-align: center;
-    width: 200px;
 }
 
 .input {
-    width: 260px;
+    width: 270px;
     height: 25px;
     font-size: 1rem;
 }

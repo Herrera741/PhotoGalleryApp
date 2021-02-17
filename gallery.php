@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photo Gallery</title>
+    <title>Photo Album Gallery</title>
 </head>
 <body>
     <h1>Photo Album Uploader Gallery</h1>
@@ -19,10 +19,10 @@
 
 
         echo '<p>Photo uploaded successfully.</p>';
-        echo htmlspecialchars($photoTitle);
-        echo htmlspecialchars($photoDate);
-        echo htmlspecialchars($photographer);
-        echo htmlspecialchars($location);
+        echo htmlspecialchars($photoTitle).'<br/>';
+        echo htmlspecialchars($photoDate).'<br/>';
+        echo htmlspecialchars($photographer).'<br/>';
+        echo htmlspecialchars($location).'<br/>';
     ?>
 </body>
 </html>
