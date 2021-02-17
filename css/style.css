@@ -17,7 +17,7 @@ body {
 
 #form-container {
     width: 550px;
-    height: 620px;
+    height: 640px;
     margin-top: 50px;
     background: rgb(0,0,0,0.6);
     font-size: 1.2rem;
@@ -26,7 +26,7 @@ body {
 }
 
 h1 {
-    padding: 60px 0px;
+    padding: 60px 0px 45px;
     text-align: center;
     font-size: 2.6rem;
 }
@@ -61,6 +61,8 @@ h1 {
 }
 
 #select-btn-text {
+
+    overflow-wrap: break-word;
     font-size: 1.1rem;
 }
 
@@ -71,6 +73,7 @@ h1 {
 }
 
 #submit-btn {
+    margin-top: 5px;
     width: 320px;
     height: 42px;
     border: 2px solid #000;
