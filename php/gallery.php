@@ -1,11 +1,17 @@
 <?php
-$target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
-//$target_file = "myFile.jpg";
+$uploaddir = '/var/www/uploads/';
+$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
 
-if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
-    echo "The file ". basename( $_FILES["fileToUpload"]). " has been uploaded.";
-     } else {
-    echo "Sorry, there was an error uploading your file.";
+echo '<pre>';
+if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile)) {
+    echo "File is valid, and was successfully uploaded.\n";
+} else {
+    echo "Possible file upload attack!\n";
 }
+
+echo 'Here is some more debugging info:';
+print_r($_FILES);
+
+print "</pre>";
+
 ?>

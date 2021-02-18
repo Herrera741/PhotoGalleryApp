@@ -54,7 +54,7 @@ h2 {
     font-size: 1rem;
 }
 
-#select-btn {
+#selectBtn {
     margin: 15px 15px 15px 35px;
     width: 144px;
     height: 42px;
@@ -67,8 +67,7 @@ h2 {
     cursor: pointer;
 }
 
-#select-btn-text {
-
+#selectBtnText {
     overflow-wrap: break-word;
     font-size: 1.1rem;
 }
@@ -79,7 +78,7 @@ h2 {
     justify-content: center;
 }
 
-#submit-btn {
+#submitBtn {
     margin-top: 5px;
     width: 320px;
     height: 42px;

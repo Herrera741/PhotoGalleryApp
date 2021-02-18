@@ -1,6 +1,6 @@
-const uploadFile = document.querySelector("#fileToUpload");
-const selectBtn = document.querySelector("#select-btn");
-const selectText = document.querySelector("#select-btn-text");
+const uploadFile = document.querySelector("#uploadFile");
+const selectBtn = document.querySelector("#selectBtn");
+const selectText = document.querySelector("#selectBtnText");
 
 selectBtn.addEventListener("click", function() {
     uploadFile.click();
