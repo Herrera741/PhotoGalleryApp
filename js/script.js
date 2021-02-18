@@ -1,14 +1,14 @@
-const fileInput = document.querySelector("#file-input")
-const selectBtn = document.querySelector("#select-btn")
-const selectText = document.getElementById("select-btn-text");
+const uploadFile = document.querySelector("#fileToUpload");
+const selectBtn = document.querySelector("#select-btn");
+const selectText = document.querySelector("#select-btn-text");
 
 selectBtn.addEventListener("click", function() {
-    fileInput.click();
+    uploadFile.click();
 });
 
-fileInput.addEventListener("change", function() {
-  if (fileInput.files) {
-    selectText.innerHTML = fileInput.files[0].name;
+uploadFile.addEventListener("change", function() {
+  if (uploadFile.files) {
+    selectText.innerHTML = uploadFile.files[0].name;
   } else {
     selectText.innerHTML = "No file selected";
   }

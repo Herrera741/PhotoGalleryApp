@@ -10,6 +10,10 @@
     <h1>Photo Album Uploader Gallery</h1>
     <h2>Upload Results</h2>
     <?php
+        move_uploaded_file($_FILES["fileToUpload"]["tmp_name"],"uploads/".$_FILES["fileToUpload"]["name"]); 
+
+
+
         $target_dir = "uploads/";
         // create short variable names
         $photoTitle = $_POST['photoTitle'];
