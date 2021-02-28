@@ -9,7 +9,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url(/PhotoGalleryApp/images/bg.jpg);
+    background: url(/images/bg.jpg);
     background-repeat: none;
     background-size: cover;
     font-family: sans-serif;
@@ -17,7 +17,7 @@ body {
 
 #form-container {
     width: 550px;
-    height: 640px;
+    height: 655px;
     margin-top: 50px;
     background: rgb(0,0,0,0.6);
     font-size: 1.2rem;
@@ -26,7 +26,7 @@ body {
 }
 
 h1 {
-    padding: 50px 0px 40px;
+    padding: 35px 0px 25px;
     text-align: center;
     font-size: 2.65rem;
 }
@@ -35,23 +35,85 @@ h2 {
     width: fit-content;
     margin-left: 32px;
     padding-bottom: 10px;
+    /* border: 5px solid cornflowerblue; */
 }
 
 .form-field {
-    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    margin-top: 10px;
+    padding: 8px 10px 5px;
+    /* border: 5px solid yellow; */
 }
 
-.label {
-    display: inline-block;
-    width: 185px;
-    margin-left: 10px;
-    text-align: center;
+.form-field label {
+    display: flex;
+    margin-left: 22px;
+    min-width: 130px;
+    height: 30px;
+    align-items: center;
+    /* border: 5px solid red; */
 }
 
-.input {
-    width: 270px;
-    height: 25px;
+.form-field.field-right-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-field input {
+    height: 30px;
+    width: 330px;
+    margin: 0;
+    padding-left: 10px;
+    border-radius: 4px;
+    outline: none;
     font-size: 1rem;
+    /* border: 5px solid magenta; */
+}
+
+.form-field input:focus {
+    border: 3.5px solid #1183ca;
+}
+
+.form-field i {
+    position: absolute;
+    top: 25%;
+    left: 87%; 
+    visibility: hidden;
+}
+
+.form-field i.fa-check-circle {
+    color: #2ecc71;
+    visibility: hidden;
+}
+
+.form-field i.fa-times-circle {
+    color: #e74c3c;
+    visibility: hidden;
+}
+
+.form-field small {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    visibility: hidden;
+    /* border: 5px solid green; */
+}
+
+.field-footer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    padding: 5px 5px 0px;
+    /* border: 5px solid blueviolet; */
+}
+
+.select-box-left {
+    /* border: 5px solid aqua; */
 }
 
 #selectBtn {
@@ -68,8 +130,10 @@ h2 {
 }
 
 #selectBtnText {
+    width: 75%;
     overflow-wrap: break-word;
     font-size: 1.1rem;
+    /* border: 5px solid green; */
 }
 
 .submit-field {
@@ -79,7 +143,7 @@ h2 {
 }
 
 #submitBtn {
-    margin-top: 5px;
+    margin-top: 15px;
     width: 320px;
     height: 42px;
     border: 2px solid #000;

@@ -5,7 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Album Gallery</title>
-    <link rel="stylesheet" href="/PhotoGalleryApp/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/e009803069.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="form-container">
@@ -14,26 +15,49 @@
             <h2>Add Photo to Gallery</h2>
         </div>
         <div class="fields-container">   
-            <form action="/PhotoGalleryApp/php/gallery.php" method="post" enctype="multipart/form-data">
-                <div class="form-field" id="title-field">
+            <form action="/php/gallery.php" method="post" enctype="multipart/form-data">
+                <div class="form-field">
                     <label class="label" for="photo-name">Photo title:</label>
-                    <input class="input" type="text" name="photoTitle" maxlength="30" placeholder="Enter title for photo">
+                    <div class="field-right-box">
+                        <input class="input" id="photoTitle" type="text" name="photoTitle" maxlength="30" placeholder="Enter title for photo">
+                        <i id="title-times" class="fas fa-times-circle"></i>
+                        <i id="title-check" class="fas fa-check-circle"></i>
+                        <small class="error" id="error1">Title cannot be blank</small>
+                    </div>
                 </div>
                 <div class="form-field" id="date-field">
                     <label class="label" for="photo-date">Date taken:</label>
-                    <input class="input" type="text" name="photoDate" maxlength="10" placeholder="mm/dd/yyyy">
+                    <div class="field-right-box">
+                        <input class="input" id="photoDate" type="text" name="photoDate" maxlength="10" placeholder="mm/dd/yyyy">
+                        <i id="date-times" class="fas fa-times-circle"></i>
+                        <i id="date-check" class="fas fa-check-circle"></i>
+                        <small class="error" id="error2">Date cannot be blank</small>
+                    </div>
+                    
                 </div>
                 <div class="form-field" id="photographer-field">
                     <label class="label" for="photographer">Photographer:</label>
-                    <input class="input" type="text" name="photographer" maxlength="30" placeholder="Enter name of photographer">
+                    <div class="field-right-box">
+                        <input class="input" id="photographer" type="text" name="photographer" maxlength="30" placeholder="Enter name of photographer">
+                        <i id="name-times" class="fas fa-times-circle"></i>
+                        <i id="name-check" class="fas fa-check-circle"></i>
+                        <small class="error" id="error3">Name cannot be blank</small>
+                    </div> 
                 </div>
                 <div class="form-field" id="location-field">
-                    <label class="label" for="location">Photo location:</label>
-                    <input class="input" type="text" name="location" maxlength="30" placeholder="Enter photo capture location">
+                    <label class="label" for="location">Location:</label>
+                    <div class="field-right-box">
+                        <input class="input" id="location" type="text" name="location" maxlength="30" placeholder="Enter photo capture location">
+                        <i id="location-times" class="fas fa-times-circle"></i>
+                        <i id="location-check" class="fas fa-check-circle"></i>
+                        <small class="error" id="error4">Please enter a valid location</small>
+                    </div>
                 </div>
-                <div class="form-field" id="upload-field">
-                    <input type="file" id="uploadFile" name="uploadFile" hidden>
-                    <button type="button" id="selectBtn">Select File</button>
+                <div class="form-field field-footer" id="upload-field">
+                    <div class="select-box-left">
+                        <input type="file" id="uploadFile" name="uploadFile" accept="image/x-png,image/jpeg" hidden>
+                        <button type="button" id="selectBtn">Select File</button>
+                    </div>
                     <span id="selectBtnText">No file selected</span>
                 </div>
                 <div class="submit-field">
@@ -42,6 +66,6 @@
             </form>    
         </div>
     </div>
-    <script src="/PhotoGalleryApp/js/script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 </html>
