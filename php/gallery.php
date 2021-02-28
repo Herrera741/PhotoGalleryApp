@@ -8,6 +8,8 @@
 </head>
 <body>
     <?php
+        // Allowed file extensions for PHP checking (not needed for assignment but still use for now).
+        // Automatically set extension boolean to false until extension is valid.
         $allowedFiles = array("jpg", "png", "jpeg", "gif");
         $successExt = False;
 
@@ -48,23 +50,17 @@
             flock($fp, LOCK_UN);
             fclose($fp);
 
-            @$fp = fopen("/home/davide/Desktop/PhotoGalleryApp-master/upload.txt", 'rb');
-            if (!$fp) {
-                echo "<p><strong>No orders pending.<br />
-                      Please try again later.</strong></p>";
-                exit;
+            // Send upload.txt to smaller array for splitting.
+            // Spliting uploaded.txt by columns. 0: name, 1: date, 2: photographer, 3: location, 4: file.
+            $uploads = file("/home/davide/Desktop/PhotoGalleryApp-master/upload.txt");
+            $numberOfUploads = count($uploads);
+            if($numberOfUploads == 0) {
+                echo("No pending uploads\n");
             }
-        
-            while (!feof($fp)) {
-                $order = fgets($fp);
-                echo htmlspecialchars($order)."<br />";
-            }
-        
-            flock($fp, LOCK_UN); // release read lock
-            fclose($fp);
 
-            echo(ini_set('display_errors', 1));
-            error_reporting(E_ALL);
+            for($i = 0; $i < $numberOfUploads; $i++) {
+                $explodeUploads = explode("\t", $uploads[$i]);
+            } 
         }
         else {
             echo("Error in uploading");
@@ -72,8 +68,20 @@
             error_reporting(E_ALL);
         }
     ?>
+    <p>
+    Sort By:
+    <select name="formSort">
+        <option value="1">Name</option>
+        <option value="2">Date</option>
+        <option value="3">Photographer</option>
+        <option value="4">Location</option>
+    </select>
     <div class="back-field">
         <button type="button" id="back-btn" onclick="history.go(-1);">Upload Photo</button>
     </div>
+    </p>
+    <?php
+
+    ?>
 </body>
 </html>
