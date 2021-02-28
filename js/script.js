@@ -24,6 +24,7 @@ function validatePhotoTitle() {
   let errorMessage = document.querySelector("#error1");
   let errorIcon = document.querySelector("#title-times");
   let successIcon = document.querySelector("#title-check");
+
   if (photoTitle.value.trim() == "") {
     photoTitle.setAttribute("style", "border: 5px solid #e74c3c;");
     errorIcon.style.visibility = "visible";
@@ -45,8 +46,10 @@ function validatePhotoDate() {
   let errorMessage = document.querySelector("#error2");
   let errorIcon = document.querySelector("#date-times");
   let successIcon = document.querySelector("#date-check");
+  let dateValue = photoDate.value.trim();
+  let re = /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/i;
   
-  if (photoDate.value.trim() == "") {
+  if (dateValue == "") {
     photoDate.setAttribute("style", "border: 5px solid #e74c3c;");
     errorIcon.style.visibility = "visible";
     successIcon.style.visibility = "hidden";
@@ -55,11 +58,15 @@ function validatePhotoDate() {
     dateFlag = false
   }
   else {
-    photoDate.setAttribute("style", "border: 5px solid #2ecc71;");
-    errorMessage.style.visibility = "hidden";
-    successIcon.style.visibility = "visible";
-    errorIcon.style.visibility = "hidden";
-    dateFlag = true
+
+    if (re.test(dateValue)) {
+      photoDate.setAttribute("style", "border: 5px solid #2ecc71;");
+      errorMessage.style.visibility = "hidden";
+      successIcon.style.visibility = "visible";
+      errorIcon.style.visibility = "hidden";
+      dateFlag = true;
+    }
+
   }
 }
 
@@ -68,6 +75,8 @@ function validatePhotographer() {
   let errorIcon = document.querySelector("#name-times");
   let successIcon = document.querySelector("#name-check");
   let nameValue = photographer.value.trim();
+  let regex = /^[a-z]+$/i;
+
   if (nameValue == "") {
     photographer.setAttribute("style", "border: 5px solid #e74c3c;");
     errorIcon.style.visibility = "visible";
@@ -77,11 +86,13 @@ function validatePhotographer() {
     nameFlag = false
   }
   else {
-    photographer.setAttribute("style", "border: 5px solid #2ecc71;");
-    errorMessage.style.visibility = "hidden";
-    successIcon.style.visibility = "visible";
-    errorIcon.style.visibility = "hidden";
-    nameFlag = true
+    if (regex.test(nameValue)) {
+      photographer.setAttribute("style", "border: 5px solid #2ecc71;");
+      errorMessage.style.visibility = "hidden";
+      successIcon.style.visibility = "visible";
+      errorIcon.style.visibility = "hidden";
+      nameFlag = true;
+    }  
   }
 }
 
@@ -89,7 +100,10 @@ function validateLocation() {
   let errorMessage = document.querySelector("#error4");
   let errorIcon = document.querySelector("#location-times");
   let successIcon = document.querySelector("#location-check");
-  if (photoLocation.value.trim() == "") {
+  let locationValue = photoLocation.value.trim();
+  let regex = /^[a-z]+$/i;
+
+  if (locationValue == "") {
     photoLocation.setAttribute("style", "border: 5px solid #e74c3c;");
     errorIcon.style.visibility = "visible";
     successIcon.style.visibility = "hidden";
@@ -98,11 +112,13 @@ function validateLocation() {
     locationFlag = false
   }
   else {
-    photoLocation.setAttribute("style", "border: 5px solid #2ecc71;");
-    errorMessage.style.visibility = "hidden";
-    successIcon.style.visibility = "visible";
-    errorIcon.style.visibility = "hidden";
-    locationFlag = true
+    if (regex.test(locationValue)) {
+      photoLocation.setAttribute("style", "border: 5px solid #2ecc71;");
+      errorMessage.style.visibility = "hidden";
+      successIcon.style.visibility = "visible";
+      errorIcon.style.visibility = "hidden";
+      locationFlag = true
+    }
   }
 }
 
