@@ -12,6 +12,7 @@
         // Automatically set extension boolean to false until extension is valid.
         $allowedFiles = array("jpg", "png", "jpeg", "gif");
         $successExt = False;
+        $mainArray = array();
 
         // Short variable names.
         $photoTitle = $_POST['photo-title'];
@@ -60,7 +61,9 @@
 
             for($i = 0; $i < $numberOfUploads; $i++) {
                 $explodeUploads = explode("\t", $uploads[$i]);
-            } 
+                array_push($mainArray, $explodeUploads[$i]);
+            }
+            echo(count($mainArray));
         }
         else {
             echo("Error in uploading");
@@ -70,18 +73,31 @@
     ?>
     <p>
     Sort By:
-    <select name="formSort">
-        <option value="1">Name</option>
-        <option value="2">Date</option>
-        <option value="3">Photographer</option>
-        <option value="4">Location</option>
-    </select>
+    <div class="dropdown-menu">
+        <select id="dropdown" name="form-sort">
+            <option value="0">Name</option>
+            <option value="1">Date</option>
+            <option value="2">Photographer</option>
+            <option value="3">Location</option>
+        </select>
+    </div>
     <div class="back-field">
         <button type="button" id="back-btn" onclick="history.go(-1);">Upload Photo</button>
     </div>
     </p>
     <?php
-
+        function compare($x, $y) {
+            if ($x == $y) { return 0; }
+            return ($x < $y) ? -1 : 1;
+        }
+        $formSort = $_POST['form-sort'];
+        switch($formSort) {
+            case "0": usort($explodeUploads[0], 'compare');
+            case "1": usort($explodeUploads[1], 'compare');
+            case "2": usort($explodeUploads[2], 'compare');
+            case "3": usort($explodeUploads[3], 'compare');
+        }
+        echo($formSort);
     ?>
 </body>
 </html>
