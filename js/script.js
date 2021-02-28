@@ -1,5 +1,4 @@
-// form fields
-const form = document.querySelector('.form');
+// form input fields
 const photoTitle = document.querySelector('#photoTitle');
 const photoDate = document.querySelector('#photoDate');
 const photographer = document.querySelector('#photographer');
@@ -16,6 +15,10 @@ photoDate.addEventListener("focusout", validatePhotoDate);
 photographer.addEventListener("focusout", validatePhotographer);
 photoLocation.addEventListener("focusout", validateLocation);
 
+// boolean flags for each field
+var titleFlag, dateFlag, nameFlag, locationFlag, fileFlag;
+titleFlag = dateFlag = nameFlag = locationFlag = fileFlag = false;
+
 // validate fields
 function validatePhotoTitle() {
   let errorMessage = document.querySelector("#error1");
@@ -27,12 +30,14 @@ function validatePhotoTitle() {
     successIcon.style.visibility = "hidden";
     errorMessage.style.visibility = "visible";
     errorMessage.style.color = "#e74c3c";
+    titleFlag = false
   }
   else {
     photoTitle.setAttribute("style", "border: 5px solid #2ecc71;");
     errorMessage.style.visibility = "hidden";
     successIcon.style.visibility = "visible";
     errorIcon.style.visibility = "hidden";
+    titleFlag = true
   }
 }
 
@@ -47,12 +52,14 @@ function validatePhotoDate() {
     successIcon.style.visibility = "hidden";
     errorMessage.style.visibility = "visible";
     errorMessage.style.color = "#e74c3c";
+    dateFlag = false
   }
   else {
     photoDate.setAttribute("style", "border: 5px solid #2ecc71;");
     errorMessage.style.visibility = "hidden";
     successIcon.style.visibility = "visible";
     errorIcon.style.visibility = "hidden";
+    dateFlag = true
   }
 }
 
@@ -67,12 +74,14 @@ function validatePhotographer() {
     successIcon.style.visibility = "hidden";
     errorMessage.style.visibility = "visible";
     errorMessage.style.color = "#e74c3c";
+    nameFlag = false
   }
   else {
     photographer.setAttribute("style", "border: 5px solid #2ecc71;");
     errorMessage.style.visibility = "hidden";
     successIcon.style.visibility = "visible";
     errorIcon.style.visibility = "hidden";
+    nameFlag = true
   }
 }
 
@@ -86,12 +95,14 @@ function validateLocation() {
     successIcon.style.visibility = "hidden";
     errorMessage.style.visibility = "visible";
     errorMessage.style.color = "#e74c3c";
+    locationFlag = false
   }
   else {
     photoLocation.setAttribute("style", "border: 5px solid #2ecc71;");
     errorMessage.style.visibility = "hidden";
     successIcon.style.visibility = "visible";
     errorIcon.style.visibility = "hidden";
+    locationFlag = true
   }
 }
 
@@ -103,7 +114,19 @@ selectBtn.addEventListener("click", function() {
 uploadFile.addEventListener("change", function() {
   if (uploadFile.files) {
     selectText.innerHTML = uploadFile.files[0].name;
+    fileFlag = true;
   } else {
     selectText.innerHTML = "No file selected";
+    fileFlag = false;
   }
 });
+
+// final check of form fields when user hits submit
+function finalCheck() {
+  if (!titleFlag || !dateFlag || !nameFlag || !locationFlag || !fileFlag) {
+    return false;
+  }
+  else {
+    return true;
+  }
+};

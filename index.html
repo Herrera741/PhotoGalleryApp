@@ -15,7 +15,7 @@
             <h2>Add Photo to Gallery</h2>
         </div>
         <div class="fields-container">   
-            <form action="/php/gallery.php" method="post" enctype="multipart/form-data">
+            <form action="/php/gallery.php" method="post" enctype="multipart/form-data" onsubmit="return finalCheck()">
                 <div class="form-field">
                     <label class="label" for="photo-name">Photo title:</label>
                     <div class="field-right-box">
@@ -61,7 +61,7 @@
                     <span id="selectBtnText">No file selected</span>
                 </div>
                 <div class="submit-field">
-                    <input id="submitBtn" type="submit" value="Submit">
+                    <input id="submitBtn" type="submit" value="Submit" onsubmit="finalCheck()">
                 </div>
             </form>    
         </div>
