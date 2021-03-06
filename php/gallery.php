@@ -9,7 +9,9 @@
 <body>
     <?php
         $mainArray = array();
-        $filePath = "/home/davide/Desktop/PhotoGalleryApp-php-w-frontend/upload.txt";
+        // $filePath = "/home/davide/Desktop/PhotoGalleryApp-php-w-frontend/upload.txt";
+        $filePath = "D:/Projects Workspace/Class Projects/CPSC 431/Assignment-1/PhotoGalleryApp/upload.txt";
+        $uploadsPath = "D:/Projects Workspace/Class Projects/CPSC 431/Assignment-1/PhotoGalleryApp/uploads/";
 
         // Short variable names.
         $photoTitle = $_POST['photoTitle'];
@@ -20,6 +22,14 @@
         
         // Validation from submitting upload.
         if(isset($_POST['submit'])) {
+
+            // add image to image directory
+            $img = $_FILES['uploadFile']['name'];
+            $img_loc = $_FILES['uploadFile']['tmp_name'];
+            move_uploaded_file($img_loc, $uploadsPath.$img);
+
+
+
             $outputstring = $photoTitle."\t".$photoDate."\t"
                         .$photographer."\t".$location."\t".$fileName."\n"; 
 
@@ -53,7 +63,7 @@
     ?>
     <p>
     Sort By:
-    <form method="post" enctype="multipart/form-data">
+    <form method="post" action="#">
         <select id="dropdown" name="form-sort">
             <option value="0">Name</option>
             <option value="1">Date</option>
@@ -73,14 +83,31 @@
             foreach($b as $k => $v) { $c[] = $arrayName[$k]; }
             return $c;
         }
-        // $sorted = sorting($mainArray, 0);
+
         $formSort = $_POST['form-sort'];
-        // switch($formSort) {
-        //     case "0": sorting($mainArray, 0);
-        //     case "1": sorting($mainArray, 1);
-        //     case "2": sorting($mainArray, 2);
-        //     case "3": sorting($mainArray, 3);
-        // }
+        switch($formSort) {
+            case "0": sorting($mainArray, 0);
+            case "1": sorting($mainArray, 1);
+            case "2": sorting($mainArray, 2);
+            case "3": sorting($mainArray, 3);
+        }
+
+        if (is_dir($uploadsPath))
+        {
+            $files = scandir($uploadsPath);
+            for ($i = 0; $i < count($files); $i++) {    
+                if($files[$i] !='.' && $files[$i] !='..') {
+
+                    // show image
+                    // $dir_path.
+                    echo "<img src='../uploads/$files[$i]' style='width:300px;height:250px;'><br>";
+
+                    // get file name
+                    echo "$files[$i]<br>";
+                }
+            }
+        }
+
     ?>
 </body>
 </html>
