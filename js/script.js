@@ -1,4 +1,5 @@
 // form input fields
+const form = document.querySelector('form');
 const photoTitle = document.querySelector('#photoTitle');
 const photoDate = document.querySelector('#photoDate');
 const photographer = document.querySelector('#photographer');
@@ -7,13 +8,19 @@ const photoLocation = document.querySelector('#location');
 // form footer actions
 const uploadFile = document.querySelector("#uploadFile");
 const selectBtn = document.querySelector("#selectBtn");
-const selectText = document.querySelector("#selectBtnText");
+var selectText = document.querySelector("#selectBtnText");
 
 // triggers
 photoTitle.addEventListener("focusout", validatePhotoTitle);
 photoDate.addEventListener("focusout", validatePhotoDate);
 photographer.addEventListener("focusout", validatePhotographer);
 photoLocation.addEventListener("focusout", validateLocation);
+// clear form fields on page load
+window.addEventListener('load', (event) => {
+  form.reset();
+  selectText.innerHTML = "No file selected";
+  fileFlag = false;
+});
 
 // boolean flags for each field
 var titleFlag, dateFlag, nameFlag, locationFlag, fileFlag;
