@@ -8,40 +8,33 @@
 </head>
 <body>
     <?php
-        // Allowed file extensions for PHP checking (not needed for assignment but still use for now).
-        // Automatically set extension boolean to false until extension is valid.
-        $allowedFiles = array("jpg", "png", "jpeg", "gif");
-        $successExt = False;
         $mainArray = array();
+        // $filePath = "/home/davide/Desktop/PhotoGalleryApp-php-w-frontend/upload.txt";
+        $filePath = "D:/Projects Workspace/Class Projects/CPSC 431/Assignment-1/PhotoGalleryApp/upload.txt";
+        $uploadsPath = "D:/Projects Workspace/Class Projects/CPSC 431/Assignment-1/PhotoGalleryApp/uploads/";
 
         // Short variable names.
-        $photoTitle = $_POST['photo-title'];
-        $photoDate = $_POST['photo-date'];
+        $photoTitle = $_POST['photoTitle'];
+        $photoDate = $_POST['photoDate'];
         $photographer = $_POST['photographer'];
         $location = $_POST['location'];
-        $fileName = $_FILES['file-name']['name'];
-
-        // Get the extension for the filename.
-        $ext = pathinfo($fileName, PATHINFO_EXTENSION);
-
-        // Loop through $allowedFiles array to check if extension matches.
-        for($i = 0; $i < count($allowedFiles); $i++) {
-            if($ext == $allowedFiles[$i]) {
-                $successExt = True;
-                break;
-            }
-        }
-
-        // Check mm/dd/yyyy format. $checkDate = 1(true) 0(false).
-        $checkDate = preg_match("/(0[1-9]|1[012])[- \/.](0[1-9]|[12][0-9]|3[01])[- \/.](19|20)\d\d/", $photoDate);
+        $fileName = $_FILES['uploadFile']['name'];
         
         // Validation from submitting upload.
-        if(isset($_POST['submit']) && $successExt && $checkDate) {
+        if(isset($_POST['submit'])) {
+
+            // add image to image directory
+            $img = $_FILES['uploadFile']['name'];
+            $img_loc = $_FILES['uploadFile']['tmp_name'];
+            move_uploaded_file($img_loc, $uploadsPath.$img);
+
+
+
             $outputstring = $photoTitle."\t".$photoDate."\t"
                         .$photographer."\t".$location."\t".$fileName."\n"; 
 
             // Writing and reading upload.txt file (hardcoded for now).
-            @$fp = fopen("/home/davide/Desktop/PhotoGalleryApp-master/upload.txt", 'ab');
+            @$fp = fopen($filePath, 'ab');
             if(!$fp) {
                 echo("Photo Gallery could not be uploaded");
                 exit;
@@ -53,17 +46,14 @@
 
             // Send upload.txt to smaller array for splitting.
             // Spliting uploaded.txt by columns. 0: name, 1: date, 2: photographer, 3: location, 4: file.
-            $uploads = file("/home/davide/Desktop/PhotoGalleryApp-master/upload.txt");
+            $uploads = file($filePath);
             $numberOfUploads = count($uploads);
-            if($numberOfUploads == 0) {
-                echo("No pending uploads\n");
-            }
+            if($numberOfUploads == 0) { echo("No pending uploads\n"); }
 
             for($i = 0; $i < $numberOfUploads; $i++) {
                 $explodeUploads = explode("\t", $uploads[$i]);
-                array_push($mainArray, $explodeUploads[$i]);
+                array_push($mainArray, $explodeUploads);
             }
-            echo(count($mainArray));
         }
         else {
             echo("Error in uploading");
@@ -73,31 +63,51 @@
     ?>
     <p>
     Sort By:
-    <div class="dropdown-menu">
+    <form method="post" action="#">
         <select id="dropdown" name="form-sort">
             <option value="0">Name</option>
             <option value="1">Date</option>
             <option value="2">Photographer</option>
             <option value="3">Location</option>
         </select>
-    </div>
+    </form>
     <div class="back-field">
         <button type="button" id="back-btn" onclick="history.go(-1);">Upload Photo</button>
     </div>
     </p>
     <?php
-        function compare($x, $y) {
-            if ($x == $y) { return 0; }
-            return ($x < $y) ? -1 : 1;
+        // Sorting function that takes the array and array position to sort.
+        function sorting($arrayName, $key) {
+            foreach($arrayName as $k => $v) { $b[] = strtolower($v[$key]); }
+            asort($b);
+            foreach($b as $k => $v) { $c[] = $arrayName[$k]; }
+            return $c;
         }
+
         $formSort = $_POST['form-sort'];
         switch($formSort) {
-            case "0": usort($explodeUploads[0], 'compare');
-            case "1": usort($explodeUploads[1], 'compare');
-            case "2": usort($explodeUploads[2], 'compare');
-            case "3": usort($explodeUploads[3], 'compare');
+            case "0": sorting($mainArray, 0);
+            case "1": sorting($mainArray, 1);
+            case "2": sorting($mainArray, 2);
+            case "3": sorting($mainArray, 3);
         }
-        echo($formSort);
+
+        if (is_dir($uploadsPath))
+        {
+            $files = scandir($uploadsPath);
+            for ($i = 0; $i < count($files); $i++) {    
+                if($files[$i] !='.' && $files[$i] !='..') {
+
+                    // show image
+                    // $dir_path.
+                    echo "<img src='../uploads/$files[$i]' style='width:300px;height:250px;'><br>";
+
+                    // get file name
+                    echo "$files[$i]<br>";
+                }
+            }
+        }
+
     ?>
 </body>
 </html>
