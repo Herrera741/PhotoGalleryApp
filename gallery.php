@@ -5,16 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Album Gallery</title>
-    <link rel="stylesheet" href="/css/server-style.css">
+    <link rel="stylesheet" href="server-style.css">
 </head>
 
 <body>
     <?php
         $mainArray = array();
-        // $filePath = "/home/davide/Desktop/PhotoGalleryApp-php-w-frontend/upload.txt";
-        $filePath = "D:/Projects Workspace/Class Projects/CPSC 431/Assignment-1/PhotoGalleryApp/upload.txt";
-        $uploadsPath = "D:/Projects Workspace/Class Projects/CPSC 431/Assignment-1/PhotoGalleryApp/uploads/";
-
+        $filePath = "upload.txt";
+        $uploadsPath = "~/uploads/";
+    
         // Short variable names.
         $photoTitle = $_POST['photoTitle'];
         $photoDate = $_POST['photoDate'];
