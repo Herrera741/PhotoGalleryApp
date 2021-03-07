@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Photo Album Gallery</title>
+    <link rel="stylesheet" href="/css/server-style.css">
 </head>
+
 <body>
     <?php
         $mainArray = array();
@@ -61,20 +63,29 @@
             error_reporting(E_ALL);
         }
     ?>
-    <p>
-    Sort By:
-    <form method="post" action="#">
-        <select id="dropdown" name="form-sort">
-            <option value="0">Name</option>
-            <option value="1">Date</option>
-            <option value="2">Photographer</option>
-            <option value="3">Location</option>
-        </select>
-    </form>
-    <div class="back-field">
-        <button type="button" id="back-btn" onclick="history.go(-1);">Upload Photo</button>
+    <div id="overlay"></div>
+    <h1>View All Photos</h1>
+    <div id="header-container">
+        <div id="sort-upload-container">
+            <div id="form-container">
+                <h2>Sort By:</h2>
+                <form method="post" action="#" id="form">
+                    <div id="dropdown" name="form-sort">
+                        <select name="state" onchange="this.form.submit();">
+                            <option value="0">Name</option>
+                            <option value="1">Date</option>
+                            <option value="2">Photographer</option>
+                            <option value="3">Location</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div id="back-field">
+                <button type="button" id="back-btn" onclick="history.go(-1);">Upload Photo</button>
+            </div>
+        </div>
     </div>
-    </p>
+    <div id="body-content">    
     <?php
         // Sorting function that takes the array and array position to sort.
         function sorting($arrayName, $key) {
@@ -92,22 +103,17 @@
             case "3": sorting($mainArray, 3);
         }
 
-        if (is_dir($uploadsPath))
-        {
-            $files = scandir($uploadsPath);
-            for ($i = 0; $i < count($files); $i++) {    
-                if($files[$i] !='.' && $files[$i] !='..') {
-
-                    // show image
-                    // $dir_path.
-                    echo "<img src='../uploads/$files[$i]' style='width:300px;height:250px;'><br>";
-
-                    // get file name
-                    echo "$files[$i]<br>";
-                }
+        function display($arrayName) {
+            foreach ($arrayName as &$record) {
+                echo "<div class='image-record'>
+                        <img src='../uploads/$record[4]'><br>
+                        <p>$record[0]<br>$record[1]<br>$record[3]<br>$record[2]</p>
+                    </div>";
             }
-        }
+        } 
 
+        display($mainArray);
     ?>
+    </div>
 </body>
 </html>

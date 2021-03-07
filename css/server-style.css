@@ -1,0 +1,124 @@
+html, 
+body { 
+    margin: 0; 
+    padding: 0;
+    overflow-x: hidden;
+    font-family: sans-serif;
+}
+
+body,
+h1,
+#header-container,
+#body-content {
+    width: 100vw;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: cadetblue;
+}
+
+h1 {
+    margin-left: 50px;
+    text-align: left;
+    font-size: 2rem;
+    padding: 20px 0px 20px 3px;
+}
+
+#header-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+#sort-upload-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#form-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 500px;
+}
+
+h2 {
+    width: 100px;
+    text-align: center;
+}
+
+form {
+    padding: 10px 30px;
+}
+
+select,
+button {
+    width: 240px;
+    height: 42px;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 4px;
+    outline: none;
+}
+
+button {
+    color: white;
+    background-color: #006db5;
+}
+
+button:hover {
+    background-color: #0085dc;
+}
+
+#back-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+}
+
+#body-content {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 50px;
+}   
+
+div.image-record {
+    display: flex;
+    flex-basis: 23%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 400px;
+    height: 400px;
+    margin: 10px 0px 0px;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+    width: 250px;
+    min-height: 250px;
+    max-height: 250px;
+    object-fit: fill;
+    object-position: center;
+    filter: drop-shadow(0 0 0.75rem #222);
+}
+
+p {
+    width: 240px;
+    margin: -18px 0px 0px;
+    padding: 5px;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+    color: #000;
+    background-color: #838B8B;
+    border-radius: 0px 0px 5px 5px;
+    filter: drop-shadow(0 0 0.75rem #222);
+}

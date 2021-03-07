@@ -73,7 +73,6 @@ function validatePhotoDate() {
       errorIcon.style.visibility = "hidden";
       dateFlag = true;
     }
-
   }
 }
 
@@ -82,7 +81,7 @@ function validatePhotographer() {
   let errorIcon = document.querySelector("#name-times");
   let successIcon = document.querySelector("#name-check");
   let nameValue = photographer.value.trim();
-  let regex = /^[a-z]+$/i;
+  let regex = /^\w(\s|\w)/gm;
 
   if (nameValue == "") {
     photographer.setAttribute("style", "border: 5px solid #e74c3c;");
@@ -108,7 +107,7 @@ function validateLocation() {
   let errorIcon = document.querySelector("#location-times");
   let successIcon = document.querySelector("#location-check");
   let locationValue = photoLocation.value.trim();
-  let regex = /^[a-z]+$/i;
+  let regex = /((^[a-zA-Z]+)|((,|\s)[a-zA-Z]+))/gm;
 
   if (locationValue == "") {
     photoLocation.setAttribute("style", "border: 5px solid #e74c3c;");

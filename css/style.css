@@ -35,7 +35,6 @@ h2 {
     width: fit-content;
     margin-left: 32px;
     padding-bottom: 10px;
-    /* border: 5px solid cornflowerblue; */
 }
 
 .form-field {
@@ -44,7 +43,6 @@ h2 {
     position: relative;
     margin-top: 10px;
     padding: 8px 10px 5px;
-    /* border: 5px solid yellow; */
 }
 
 .form-field label {
@@ -53,7 +51,6 @@ h2 {
     min-width: 130px;
     height: 30px;
     align-items: center;
-    /* border: 5px solid red; */
 }
 
 .form-field.field-right-box {
@@ -70,7 +67,6 @@ h2 {
     border-radius: 4px;
     outline: none;
     font-size: 1rem;
-    /* border: 5px solid magenta; */
 }
 
 .form-field input:focus {
@@ -99,7 +95,6 @@ h2 {
     width: 100%;
     margin: 0;
     visibility: hidden;
-    /* border: 5px solid green; */
 }
 
 .field-footer {
@@ -109,11 +104,6 @@ h2 {
     justify-content: center;
     margin: auto;
     padding: 5px 5px 0px;
-    /* border: 5px solid blueviolet; */
-}
-
-.select-box-left {
-    /* border: 5px solid aqua; */
 }
 
 #selectBtn {
@@ -124,16 +114,19 @@ h2 {
     border-radius: 5px;
     color: #fff;
     font-size: 1.1rem;
-    background: #d11a2a;
+    background-color: #D22B2B;
     outline: none;
     cursor: pointer;
+}
+
+#selectBtn:hover {
+    background-color: #FF2400;
 }
 
 #selectBtnText {
     width: 75%;
     overflow-wrap: break-word;
     font-size: 1.1rem;
-    /* border: 5px solid green; */
 }
 
 .submit-field {
@@ -153,4 +146,8 @@ h2 {
     background: #1183ca;
     outline: none;
     cursor: pointer;
+}
+
+#submitBtn:hover {
+    background-color: #229fec;
 }
